@@ -112,8 +112,8 @@ if(isset($_POST["searchdata"])){
                     class="textfield "> <?php if(isset($_POST['searchdata'])){ echo $result['address']; }?> </textarea>
                 <input type="Submit" name="searchdata" value="Search" class="btn" style="background-color: gray;">
                 <input type="Submit" name="save" value="Save" class="btn" style="background-color: green;">
-                <input type="Submit" value="Modify" class="btn">
-                <input type="Submit" value="Delete" class="btn" style="background-color: red;">
+                <input type="Submit"  value="Modify" class="btn">
+                <input type="Submit" name="delete"  value="Delete" class="btn" style="background-color: red;">
                 <input type="Submit" value="Clear" class="btn" style="background-color: blue;">
 
             </div>
@@ -155,5 +155,24 @@ if(isset($_POST["save"])){
 
 
 }
+
+?>
+
+<?php
+// data delete query logic
+if(isset( $_POST["delete"])){
+
+    $id=$_POST['search'];
+
+    $sql= "DELETE FROM employee Where id='$id'";
+    $result=mysqli_query($conn,$sql);
+    if($result){
+        echo "delete data from databaes";
+    }else{
+
+        echo "data is not delete from database";
+    }
+}
+
 
 ?>
