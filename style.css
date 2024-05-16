@@ -1,3 +1,46 @@
 body {
-    background-color: blueviolet;
+    background-color: #34568B;
+    padding: 0px;
+    margin: 0px;
+}
+
+.center{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50% , -50%);
+    width: 650px;
+    background-color: white;
+    border-radius: 5px;
+}
+.center h1{
+    border-bottom: 2px solid silver;
+    text-align: center;
+    padding-bottom: 20px;
+
+}
+.textfield{
+    width:90%;
+    margin: 8px; 
+    padding: 8px;
+    border: 2px solid #34568B;
+    font-size: 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.form{
+    margin-left: 20px;
+}
+.btn{
+    margin: 7px 4px;
+    
+   width: 15%;
+   height: 40px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: orange;
+
 }
