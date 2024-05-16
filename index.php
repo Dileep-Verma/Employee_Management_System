@@ -112,16 +112,20 @@ if(isset($_POST["searchdata"])){
                     class="textfield "> <?php if(isset($_POST['searchdata'])){ echo $result['address']; }?> </textarea>
                 <input type="Submit" name="searchdata" value="Search" class="btn" style="background-color: gray;">
                 <input type="Submit" name="save" value="Save" class="btn" style="background-color: green;">
-                <input type="Submit"  value="Modify" class="btn">
-                <input type="Submit" name="delete"  value="Delete" class="btn" style="background-color: red;">
-                <input type="Submit" value="Clear" class="btn" style="background-color: blue;">
+                <input type="Submit" name="modify"  value="Modify" class="btn">
+                <input type="Submit" name="delete"  value="Delete" onclick="return Checkdelete()" class="btn" style="background-color: red;">
+                <input type="Submit" name="clear" value="Clear" class="btn" style="background-color: blue;">
 
             </div>
 
         </form>
 
     </div>
-
+<script>
+    function Checkdelete(){
+         return confirm(' are you sure you want delete this record data!!!');
+    }
+</script>
 
 
 </body>
@@ -147,9 +151,12 @@ if(isset($_POST["save"])){
      $result=mysqli_query($conn,$sql);
 
      if($result){
-        echo "data is insert into database";
+
+        echo "<script>alert('Data  is insert into database')</script>";
+
      }else{
-        echo "data is  not insert into database";
+
+        echo "<script>alert('Data  is not insert into database')</script>";
      }
 
 
@@ -157,6 +164,38 @@ if(isset($_POST["save"])){
 }
 
 ?>
+
+
+<?php
+//here data modify logic
+if(isset($_POST['modify']))
+{
+
+    $id=$_POST['search'];            
+    $name=$_POST['name'];
+    $gender=$_POST['gender'];
+    $email=$_POST['email'];
+    $salary=$_POST['salary'];
+    $department=$_POST['department'];
+    $address=$_POST['address'];
+
+    $sql= "UPDATE employee SET name='$name', gender='$gender', email='$email',
+     salary='$salary', department='$department', address='$address' WHERE id='$id'";
+     $result=mysqli_query($conn,$sql);
+     if($result){
+        echo "<script>alert('Record Updated!!!')</script>";
+    
+}else{
+    echo "<script>alert('Failed Updated')</script>";
+}
+
+}
+
+?>
+
+
+
+
 
 <?php
 // data delete query logic
@@ -166,12 +205,14 @@ if(isset( $_POST["delete"])){
 
     $sql= "DELETE FROM employee Where id='$id'";
     $result=mysqli_query($conn,$sql);
-    if($result){
-        echo "delete data from databaes";
-    }else{
 
-        echo "data is not delete from database";
+    if($result){
+        echo "<script>alert('Data  is delete from database')</script>";
+    }else{
+        echo "<script>alert('Data  is not delete from database')</script>";
     }
+  
+    
 }
 
 
